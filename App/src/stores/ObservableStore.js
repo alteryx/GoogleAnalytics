@@ -18,25 +18,56 @@ class ObservableStore {
               ?
                 item.getValue()
               :
-                d.type === 'dropDown'
+                (d.type === 'dropDown' || d.type === 'listBox')
                   ? { selection: item.getValue(), stringList: item.StringList.enums }
                   :JSON.parse(item.getValue())),
       });
+      this.allowChangeFlag = true;
       autorunAsync(() => {
         let dropDownBool = (d.type === 'dropDown');
         let textBoxBool = (d.type === 'value');
+        let listBoxBool = (d.type === 'listBox');
+        let allowChangeFlag = (this.allowChangeFlag);
+        let userDataChanged = item.UserDataChanged;
+
         console.log('Autorunning asynchrously...');
         if(textBoxBool & (toJS(this[d.key]) != item.getValue())){
           item.setValue(
             d.type === 'value' ? toJS(this[d.key]) : JSON.stringify(toJS(this[d.key]))
           );
-        }
-        else if (
-                  (dropDownBool) &&
+        } else if (
+                    (dropDownBool) &&
                     ((toJS(this[d.key].selection) != item.getValue()) ||
-                    !(_.isEqual(toJS(this[d.key].stringList), item.StringList.enums)))
-                )
-        {
+                      !(_.isEqual(toJS(this[d.key].stringList), item.StringList.enums)))
+                  ) {
+          item.UserDataChanged = [];
+          item.setValue();
+          item.setStringList();
+          item.UserDataChanged = userDataChanged;
+          item.setStringList(toJS(this[d.key].stringList));
+          item.setValue(toJS(this[d.key].selection));
+        } else if (
+                    (listBoxBool)  && (allowChangeFlag) &&
+                    (
+                      !(
+                        _.isEqual(
+                            toJS(this[d.key].selection),
+                            item.getValue()
+                        )
+                      )
+                    ||
+                    !(
+                        _.isEqual(
+                          toJS(this[d.key].stringList),
+                          item.StringList.enums
+                        )
+                      )
+                    )
+                  ) {
+          item.UserDataChanged = [];
+          item.setValue();
+          item.setStringList();
+          item.UserDataChanged = userDataChanged;
           item.setStringList(toJS(this[d.key].stringList));
           item.setValue(toJS(this[d.key].selection));
         }

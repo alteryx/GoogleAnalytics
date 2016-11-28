@@ -68,9 +68,22 @@ Google Sheets Input</Text>
         </Annotation>
       </Properties>
     </Node>
+    <Node ToolID="147">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.ListBox">
+        <Position x="870" y="66" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name>listBoxTest</Name>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
     <Node ToolID="123">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="54" y="373.9694" width="1734" height="462.0001" />
+        <Position x="54" y="375.9694" width="1734" height="460.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -249,7 +262,7 @@ Google Sheets Input</Text>
         </Node>
         <Node ToolID="115">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="342" y="417.9694" width="706.064" height="393.0001" />
+            <Position x="342" y="418.9694" width="706.064" height="392.0001" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -531,7 +544,7 @@ worksheetName=worksheetName
         </Node>
         <Node ToolID="118">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="1061" y="417.9695" width="620" height="360.0002" />
+            <Position x="1061" y="418.9695" width="620" height="359.0002" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -765,7 +778,7 @@ R:  First row contains field names</Text>
     </Node>
     <Node ToolID="107">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="1306.251" y="150" width="253" height="128" />
+        <Position x="1306.251" y="151" width="253" height="127" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -824,7 +837,7 @@ R:  First row contains field names</Text>
     </Node>
     <Node ToolID="113">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="55" y="150" width="1236.251" height="212.0001" />
+        <Position x="55" y="151" width="1236.251" height="211.0001" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1078,7 +1091,7 @@ R:  First row contains field names</Text>
     </Node>
     <Node ToolID="126">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="524.2512" y="73" width="138.6955" height="19" />
+        <Position x="524.2512" y="73" width="131.203" height="18" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1118,7 +1131,7 @@ R:  First row contains field names</Text>
     </Node>
     <Node ToolID="128">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="558.2512" y="102" width="98.89567" height="19" />
+        <Position x="558.2512" y="102" width="93.57408" height="18" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -1504,6 +1517,12 @@ Support Macro(s)
         <Value />
         <IsNumeric value="False" />
       </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>listBoxTest</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
     </Constants>
     <MetaInfo>
       <NameIsFileName value="True" />
@@ -1817,6 +1836,16 @@ column	9</DynamicConfiguration>
               <Password value="False" />
               <Multiline value="False" />
               <Hidden value="False" />
+            </Question>
+            <Question>
+              <Type>ListBox</Type>
+              <Description>listBoxTest</Description>
+              <Name>listBoxTest</Name>
+              <ToolId value="147" />
+              <Multiple value="True" />
+              <Multiple_Custom value="False" />
+              <Multiple_Default value="False" />
+              <Mode>FieldTypes</Mode>
             </Question>
           </Questions>
         </Question>

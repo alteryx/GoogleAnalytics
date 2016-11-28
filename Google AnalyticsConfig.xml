@@ -3,7 +3,7 @@
 	The variables [Engine.EngineDirectory], [Engine.PluginDirectory]
 	and [Engine.JavaScriptPluginDirectory] can also be used-->
 <AlteryxJavaScriptPlugin>
-  <EngineSettings EngineDllEntryPoint="Google Sheets Input\Supporting_Macros\GoogleSheetsInput.yxmc" EngineDll="Macro" SDKVersion="10.1"/>
+  <EngineSettings EngineDllEntryPoint="Google Analytics\Supporting_Macros\GoogleSheetsInput.yxmc" EngineDll="Macro" SDKVersion="10.1"/>
   <GuiSettings Html="Google AnalyticsGui.html" Icon="Google AnalyticsIcon.png" Help="HTML-GoogleSheetsInput.htm" SDKVersion="10.1">
     <InputConnections>
       <!--Connection Name="Input" AllowMultiple="False" Optional="True" Type="Connection" Label=""/-->
