@@ -12,7 +12,12 @@ class AyxStore extends ObservableStore {
         item.UserDataChanged.push(() => {
           store[d.key] = item.value;
         })
-      } else if (d.type == 'dropDown') {
+      } else if (d.type === 'dropDown') {
+        item.UserDataChanged.push(() => {
+          store[d.key].stringList = item.StringList.enums;
+          store[d.key].selection = item.value;
+        })
+      } else if (d.type === 'listBox') {
         item.UserDataChanged.push(() => {
           store[d.key].stringList = item.StringList.enums;
           store[d.key].selection = item.value;

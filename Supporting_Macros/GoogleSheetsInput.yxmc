@@ -68,6 +68,45 @@ Google Sheets Input</Text>
         </Annotation>
       </Properties>
     </Node>
+    <Node ToolID="147">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.ListBox">
+        <Position x="858" y="78" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name>listBoxTest</Name>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="148">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
+        <Position x="1002" y="78" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="1">
+          <Name>dimensionsList</Name>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="150">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.DropDownListBox.DropDown">
+        <Position x="1158" y="78" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="1">
+          <Name>webPropertiesList</Name>
+          <DefaultAnnotationText />
+          <Left value="True" />
+        </Annotation>
+      </Properties>
+    </Node>
     <Node ToolID="123">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
         <Position x="54" y="373.9694" width="1734" height="462.0001" />
@@ -1504,6 +1543,24 @@ Support Macro(s)
         <Value />
         <IsNumeric value="False" />
       </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>listBoxTest</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>dimensionsList</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>webPropertiesList</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
     </Constants>
     <MetaInfo>
       <NameIsFileName value="True" />
@@ -1817,6 +1874,35 @@ column	9</DynamicConfiguration>
               <Password value="False" />
               <Multiline value="False" />
               <Hidden value="False" />
+            </Question>
+            <Question>
+              <Type>ListBox</Type>
+              <Description>listBoxTest</Description>
+              <Name>listBoxTest</Name>
+              <ToolId value="147" />
+              <Multiple value="True" />
+              <Multiple_Custom value="False" />
+              <Multiple_Default value="False" />
+              <Mode>FieldTypes</Mode>
+            </Question>
+            <Question>
+              <Type>TextBox</Type>
+              <Description>dimensionsList</Description>
+              <Name>dimensionsList</Name>
+              <ToolId value="148" />
+              <Default />
+              <Password value="False" />
+              <Multiline value="False" />
+              <Hidden value="False" />
+            </Question>
+            <Question>
+              <Type>ListBox</Type>
+              <Description>webPropertiesList</Description>
+              <Name>webPropertiesList</Name>
+              <ToolId value="150" />
+              <Multiple value="False" />
+              <Default />
+              <Mode>FieldTypes</Mode>
             </Question>
           </Questions>
         </Question>

@@ -1,55 +1,110 @@
 <!--
-Created by Stephen Wagner, 12/18/2015
-Google Sheets Input GUI
+Created by Content Engineering, 12/1/2016
+Google Analytics Input GUI
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Google Sheets Input</title>
+    <title>Google Analytics Input</title>
     <script type="text/javascript">
         // Include version 1 of the base GUI library.
         document.write('<link rel="import" href="' + window.Alteryx.LibDir + '1/lib/alteryx/gui/includes.html">');
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <style>
-        .alignment_container {
+        hr {
+           border-width: 1px
+           border-style: solid;
+           border-color: rgb(238,238,238);
+           color: rgb(238,238,238);
+           background-color: rgb(238,238,238);
+           margin: 0px 0px;
+        }
+
+        .selectionLegend {
+            margin: 5px 0px 5px 10px;
+        }
+
+        #metricsGoalsList .searchable-list-box, #dimensionsGoalsList .searchable-list-box {
+                height:126px;
+        }
+
+        .prevBtn {
+            border-color: rgb(228, 228, 228);
+            background-color: white;
+            color: black;
+            display: inline-block;
+            margin: 0 0 0 5px;
+            padding: 6px 10px 7px 10px;
+            border-width: 1px;
+            border-style: solid;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 1em;
+            cursor: pointer;
+            float: right;
+        }
+
+        .nextBtn {
+            float: right;
+            display: inline-block;
+        }
+
+        /* Warning message styling */
+        .warning {
+            background-color: red;
+            border-radius: 0px;
+            color: white;
             display: block;
-            vertical-align: middle;
-            padding: 4px 0;
-            width:93%;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 1em;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            padding: 3px 5px 3px 5px;
+            border: rgb(187,187,187);
+            border-style: solid;
+            border-width: 1px;
         }
 
-        .alignment_container2 {
-            display: block;
-            vertical-align: middle;
-            padding: 4px 0;
-            width:70%;
+        .alteryx-grid-text-cell {
+            overflow:visible;
         }
 
-        .option_button {
-            width: 100%;
-            float: center;
-            vertical-align: middle;
-            table-layout: auto;
-            border-collapse: collapse;
+        .selectionMessage-outer {
+            min-height: 25px;
+            max-height: auto;
+            margin-bottom: 5px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 5px;
+            background-color: rgb(238,238,238);
+            border: #D5D5D5;
+            border-style: solid;
+            border-width: 1px;
         }
 
-        .option_button button {
-            min-width: 116px;
-            max-width: 116px;
-            padding: 8px 12px 8px 12px;
-            text-align: middle;
-            margin: auto;
-            display: block;
-            float: left;
-            border-color: rgb(22, 145, 198);
-            background-color: rgb(22, 145, 198);
-            color: rgb(255, 255, 255);
+        .selectionMessage-inner {
+            max-height: auto;
+            margin-bottom: 5px;
+            padding-left: 5px;
+            border-style: none;
+
         }
 
-        @media (max-width:407px) {
+        .selectionMessage-btn {
+            display: inline-block;
+            margin-top: 5px;
+            margin-right: 5px;
+            margin-bottom: 0px;
+            padding: 6px 10px 7px 10px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(187,187,187);
+        }
+
+/*        @media (max-width:407px) {
             .alignment_container {
                 padding-left:5%;
                 width:90%;
@@ -58,25 +113,20 @@ Google Sheets Input GUI
                 padding-left: 5%;
                 width:90%;
             }
-        }
-
-        alteryx-pluginwidget[dataname=firstRowContainsNames] label {
-            width: 75%;
-        }
+        }*/
     </style>
 
 </head>
 
 <body>
 <!-- 1st view - Online or Offline Mode -->
-    
     <fieldset id="accessMethod" style="display:block">
-        <legend>Google Analytics Credentials</legend>
+        <legend>Sign in to Google Analytics</legend>
         <table>
             <tr>
                 <td>
                 <button style="width:116px;" type="submit" id="onlineMode" onclick="login();">Online</button><br/><br/>
-                Sign in using Google Account credentials. This option requires re-entering credentials every 60 minutes or any time a new workflow is opened.
+                Sign in using Google Analytics credentials. This option requires re-entering credentials every 60 minutes or any time a new workflow is opened.
                 </td>
             </tr>
             <tr><td height="3"></td></tr>
@@ -99,7 +149,7 @@ Google Sheets Input GUI
 
 <!-- 1b view - Offline credentials -->
     <fieldset id="offlineCreds" style="display:none">
-        <legend>Google Analytics Credentials</legend>
+        <legend>Enter Google Analytics credentials</legend>
         <label for="dataItemClientID">Client ID</label>
         <alteryx-pluginwidget type="TextBox" id="dataItemClientID" dataName="client_id"></alteryx-pluginwidget>
         <br/>
@@ -118,67 +168,71 @@ Google Sheets Input GUI
         <a href="javascript:void(0)" onclick="displayFieldset(['#accessMethod']); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
     </fieldset>
 
-<!--Workbook fieldset -->
-    <!--<fieldset id="workbooks" style="display:none">
-        <legend>Select a Spreadsheet</legend>
-        <alteryx-pluginwidget type="ListBox" dataType="StringSelector" isSearchable="true" id="dataItemWorkbookID" dataName="workbookID" onclick="enable_toWorksheetList()"></alteryx-pluginwidget>
-        <br/>
+<!-- Account/WebProperties/Profiles Selectors fieldset -->
+    <fieldset id="profileSelectors" style="display:block;">
+        <legend>Select an Account, WebProperty, and Profile</legend>
+        <label>Available Accounts</label>
+        <alteryx-pluginwidget type="DropDown"  id="accountsList" dataName="accountsList"></alteryx-pluginwidget>
+        <p style="margin: 10px;"></p>
+        <label>Available WebProperties</label>
+        <alteryx-pluginwidget type="DropDown"  id="webPropertiesList" dataName="webPropertiesList"></alteryx-pluginwidget>
+        <p style="margin: 10px;"></p>
+        <label>Available Profiles</label>
+        <alteryx-pluginwidget type="DropDown"  id="profilesList" dataName="profilesList"></alteryx-pluginwidget>
+        <p style="margin: 5px;"></p>
         <div>
-            <button type="submit" style="float: right" id="toWorksheetList" onclick="get_worksheet_list();" disabled>Next</button>
-            <button type="secondary" style="float: right" id="backToCredentials" onclick="changeCredentials(); myIFrame.location='https://www.google.com/accounts/Logout';">Previous</button>
+            <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
+            <button class="prevBtn" id="" onclick="">Previous</button>
         </div>
-        <br/>
-        <br/>
-        <br/>
-        <a href="javascript:void(0)" onclick="changeCredentials(); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
     </fieldset>
 
-<!--Worksheet fieldset -->
-    <!--<fieldset id="sheets" style="display:none">
-        <legend>Select a Sheet</legend>
-        <alteryx-pluginwidget type="CheckBox" id="dataItemFirstRowContainsNames" dataName="firstRowContainsNames" text="First row contains field names" width="90%"></alteryx-pluginwidget>
-        <br/>
-        <alteryx-pluginwidget type="ListBox" dataType="StringSelector" isSearchable="true" id="dataItemWorksheetID" dataName="worksheetID" onclick="enable_toConfigComplete()"></alteryx-pluginwidget>
-        <br/>
-        <div>
-            <button type="submit" style="float: right" id="toConfigComplete" onclick="changeToConfigComplete();" disabled>Done</button>
-            <button type="secondary" style="float: right" id="backToWorkbooks" onclick="get_workbook_list();">Previous</button>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <a href="javascript:void(0)" onclick="changeCredentials(); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
-    </fieldset> -->
-
-<!--Config complete fieldset 
-    <fieldset id="configComplete" style="display:none">
-        <legend>Configuration Summary</legend>
-        <b>Spreadsheet</b><div id="configCompleteWorkbook"></div><br/>
-        <b>Sheet</b><div id="configCompleteWorksheet"></div>
-        <br style="Line-height:10px"/>
+<!-- Metrics fieldset -->
+    <fieldset id="metrics" style="display:block;"><!--Add a display:none during process story-->
+        <legend>Select Metrics to Include</legend>
         <hr>
+        <p class="selectionLegend">Select up to ten metrics and goals...</p>
+        <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
+          ismultiselect="true" issearchable="true" id="metricsList" dataName="metricsList" showsearchrow="true"></alteryx-pluginwidget>
+        <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
+          ismultiselect="true" issearchable="true" id="metricsGoalsList" dataName="metricsGoalsList" showsearchrow="true"></alteryx-pluginwidget>
+        <div id="selectedMetrics"></div>
         <div>
-        <button type="secondary" style="float: right" id="startOver" onclick="resetSelections();get_workbook_list();">Change Spreadsheet</button>
-        <button type="submit" style="float: right" id="backToWorksheets" onclick="get_worksheet_list();">Previous</button>
+            <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
+            <button class="prevBtn" id="" onclick="">Previous</button>
         </div>
-        <br/>
-        <br/>
-        <br/>
+    </fieldset>
 
-        <a href="javascript:void(0)" onclick="changeCredentials(); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
-    </fieldset> -->
+<!-- Dimensions fieldset -->
+    <fieldset id="dimensions" style="display:block;"><!--Add a display:none during process story-->
+        <legend>Select Dimensions to Include (Optional)</legend>
+        <hr>
+        <p class="selectionLegend">Select up to seven dimensions and goals...</p>
+        <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
+          ismultiselect="true" issearchable="true" id="dimensionsList" dataName="dimensionsList" showsearchrow="true"></alteryx-pluginwidget>
+        <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
+          ismultiselect="true" issearchable="true" id="dimensionsGoalsList" dataName="dimensionsGoalsList" showsearchrow="true"></alteryx-pluginwidget>
+        <div id="selectedDimensions"></div>
+        <div>
+            <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
+            <button class="prevBtn" id="" onclick="">Previous</button>
+        </div>
+    </fieldset>
 
 <!-- fieldset for the non-captured fields -->
     <fieldset id="token" style="display:none">
         <alteryx-pluginwidget type="TextBox" id="dataItemAccessToken" dataName="accessToken"></alteryx-pluginwidget>
         <alteryx-pluginwidget type="TextBox" id="dataItemView" dataName="view"></alteryx-pluginwidget>
+
         <a href="#" style="display:none" id="logoutText" target='myIFrame' onclick="myIFrame.location='https://www.google.com/accounts/Logout';"></a>
         <iframe name='myIFrame' id="myIFrame" style='display:none'></iframe>
     </fieldset>
 
 <!-- API error messaging -->
     <div id="connectionStatusBox" style="display:none">
-            <div id="connectionStatus" class="button_alignment_container"></div>
+        <div id="connectionStatus" class="button_alignment_container"></div>
     </div>
 
     <div id="app">

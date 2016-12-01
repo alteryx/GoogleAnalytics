@@ -1,6 +1,6 @@
 //Accounts menu functions
-const populateAccountsList = () => {
-  const token = Alteryx.Gui.manager.GetDataItem('accessToken').value
+const populateAccountsList = (store) => {
+  const token = store.accessToken
   const fetchAccounts = getAcccountsAjaxCall(token);
 
   const parseAccounts = (results) => {
@@ -19,7 +19,7 @@ const populateAccountsList = () => {
   fetchAccounts
     .then(parseAccounts)
     .done(setAccountsDropdownMenu)
-    .fail(handleApiFail)
+    //.fail(handleApiFail)
 }
 
 const getAcccountsAjaxCall = (accessToken) => {
@@ -101,7 +101,7 @@ const getAccessTokenAjaxCall = () => {
 }
 
 
- 
+
 //const loggedIn    =   false;
 
 // 1st step - Online login method
@@ -116,20 +116,20 @@ const login = (store) => {
     const LOGOUT      =   'http://accounts.google.com/Logout';
     const TYPE        =   'token';
     const _url        =   OAUTHURL + 'scope=' + SCOPE + '&client_id=' + CLIENTID + '&redirect_uri=' + REDIRECT + '&response_type=' + TYPE;
-      
+
     console.log("login() called");
     console.log('_url');
     console.log(_url);
 
-    const win         =   window.open(_url, "windowname1", 'width=800, height=600'); 
-    
-    
+    const win         =   window.open(_url, "windowname1", 'width=800, height=600');
 
-    const pollTimer   =   window.setInterval(() => { 
+
+
+    const pollTimer   =   window.setInterval(() => {
         console.log('pollTimer() called');
         // window.location.href = toolGuiUrl;
         try {
-            if (win.document.location.origin === "https://developers.google.com") { 
+            if (win.document.location.origin === "https://developers.google.com") {
                 const url =   win.document.URL;
                 accessToken =   gup(url, 'access_token');
                 console.log("Online Access Token:")
@@ -162,8 +162,8 @@ const gup = (url, name) => {
 
 // 3rd step - Validates the token received from login()
 const validateToken = (token) =>{
-    const VALIDURL    =   'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=';   
-    
+    const VALIDURL    =   'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=';
+
     // API call settings
     const settings = {
         "async": true,
@@ -198,22 +198,22 @@ const ajaxSuccess = (data, textStatus) => {
     document.getElementById("connectionStatus").innerHTML = "";
     document.getElementById("connectionStatusBox").setAttribute("style", "display: none");
     Alteryx.Gui.manager.GetDataItem('accessToken').setValue(accessToken);
-    // Call function to retrive workbook list 
+    // Call function to retrive workbook list
     // get_workbook_list();
 }
 
 
 const displayFieldset = (fieldsetName) => {
-   
+
    //Array containing all fieldsets
    let fieldsetArray = ["#accessMethod", "#onlineCreds", "#offlineCreds"]
 
    //Do we need to exclude the one that's about to be shown?
    //Array containing all fieldsets except for fieldsetName
-   let hideArray = fieldsetArray.filter((v) => v !== fieldsetName)    
+   let hideArray = fieldsetArray.filter((v) => v !== fieldsetName)
 
-   
-   $(document).ready(() => { 
+
+   $(document).ready(() => {
         //Hide each item in the hideArray
         hideArray.forEach((v) => {
            $(v).hide()
@@ -227,4 +227,4 @@ const displayFieldset = (fieldsetName) => {
 }
 
 
-export { populateAccountsList, setFreshAccessToken, getAccessTokenAjaxCall, login, gup, validateToken, displayFieldset };
+export { setFreshAccessToken, getAccessTokenAjaxCall, login, gup, validateToken, displayFieldset };
