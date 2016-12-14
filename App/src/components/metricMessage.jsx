@@ -1,19 +1,17 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import _ from 'lodash'
-//import * as metrics from '../utils/metrics'
 
 class MetricMessage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.store = props.store;
   }
 
-  addClass(total) {
+  addClass (total) {
     return total < 1 || total > 10 ? 'warning' : ''
   }
 
-  messageText(total) {
+  messageText (total) {
     let text
 
     if (total < 1) {
@@ -27,7 +25,7 @@ class MetricMessage extends React.Component {
     return text;
   }
 
-  render() {
+  render () {
     let metrics = this.store.metricsList.selectedValues
     let goals = this.store.metricsGoalsList.selectedValues
     let total = this.store.totalMetricsAndGoals
@@ -57,5 +55,4 @@ class MetricMessage extends React.Component {
     );
   }
 }
-
 export default observer(MetricMessage);

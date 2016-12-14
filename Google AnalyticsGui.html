@@ -104,7 +104,25 @@ Google Analytics Input GUI
             border-color: rgb(187,187,187);
         }
 
-/*        @media (max-width:407px) {
+        .datePicker {
+            display: inline-block;
+            max-width: 150px;
+            padding: 0px 5px 10px 0px;
+        }
+
+        .form-control {
+            margin-top: 0px;
+        }
+
+        #preDefDateRange {
+            max-width: 200px;
+        }
+
+        #dateWarning {
+            float: left;
+        }
+
+        /*@media (max-width:407px) {
             .alignment_container {
                 padding-left:5%;
                 width:90%;
@@ -197,11 +215,7 @@ Google Analytics Input GUI
         <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
           ismultiselect="true" issearchable="true" id="metricsGoalsList" dataName="metricsGoalsList" showsearchrow="true"></alteryx-pluginwidget>
         <div id="selectedMetrics"></div>
-        <div>
-            <!-- Add id name and onclick function during process story -->
-            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
-            <button class="prevBtn" id="" onclick="">Previous</button>
-        </div>
+        
     </fieldset>
 
 <!-- Dimensions fieldset -->
@@ -220,6 +234,69 @@ Google Analytics Input GUI
             <button class="prevBtn" id="" onclick="">Previous</button>
         </div>
     </fieldset>
+
+<!-- Segments fieldset -->
+    <fieldset id="segments" style="display:block;"><!--Add a display:none during process story-->
+        <legend>Select Segments to Include (Optional)</legend>
+        <hr>
+        <p class="selectionLegend">Select up to four segments...</p>
+        <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
+          ismultiselect="true" issearchable="true" id="segmentsList" dataName="segmentsList" showsearchrow="true"></alteryx-pluginwidget>
+        <div id="selectedSegments"></div>
+        <div id="advOptions">
+            <alteryx-pluginwidget type="CheckBox" showAsToggle="true" id="advOptions" dataName="advOptions" text="Advanced Options"></alteryx-pluginwidget>
+        </div>
+        <div id="maxResults" style="margin-left: 20px;">
+            <label for="maxResults">Maximum Results</label>
+            <alteryx-pluginwidget type="NumericSpinner" id="maxResults" default="1000" min="0" max="10000" step="100" dataName="maxResults"></alteryx-pluginwidget>
+        </div>
+        <div>
+            <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
+            <button class="prevBtn" id="" onclick="">Previous</button>
+        </div>
+    </fieldset>
+
+<!-- Date Pickers fieldset -->
+    <fieldset id="datePickers" style="display:block;"><!--Add a display:none during process story-->
+        <legend>Select Dates to Include</legend>
+        <div id="preDefDateRange">
+            <label for="preDefDropDown">Preset Date Range</label>
+            <alteryx-pluginwidget type="DropDown" id="preDefDropDown" dataName="preDefDropDown">
+                <alteryx-option uiobject="Custom">custom</alteryx-option>
+                <alteryx-option uiobject="Today">today</alteryx-option>
+                <alteryx-option uiobject="Yesterday">yesterday</alteryx-option>
+                <alteryx-option uiobject="Last 7 Days">last7Days</alteryx-option>
+                <alteryx-option uiobject="Last Week">lastWeek</alteryx-option>
+                <alteryx-option uiobject="Last 30 Days">last30Days</alteryx-option>
+                <alteryx-option uiobject="Last Month">lastMonth</alteryx-option>
+                <alteryx-option uiobject="Month to Date">monthToDate</alteryx-option>
+                <alteryx-option uiobject="Year to Date">yearToDate</alteryx-option>
+                <alteryx-option uiobject="Last Year">lastYear</alteryx-option>
+            </alteryx-pluginwidget>
+        </div>
+        <br>
+        <div id="startDate" class="datePicker">
+            <label for="startDatePicker" class="datePickerLabel">Start</label>
+            <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="startDatePicker" dataType="SimpleDate" dataName="startDatePicker">
+            </alteryx-pluginwidget>
+        </div>
+        <div id="endDate" class="datePicker">
+            <label for="endDatePicker" class="datePickerLabel">End</label>
+            <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="endDatePicker" dataType="SimpleDate" dataName="endDatePicker"></alteryx-pluginwidget>
+        </div>
+        <div>
+            <div id="dateWarning"></div>
+          <div style="float: right">
+          <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
+            <button class="prevBtn" id="" onclick="">Previous</button>
+          </div>
+        </div>
+    </fieldset>
+
+
+
 
 <!-- fieldset for the non-captured fields -->
     <fieldset id="token" style="display:none">

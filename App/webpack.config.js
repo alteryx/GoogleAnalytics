@@ -14,7 +14,7 @@ module.exports = {
   ], */
   loaders: [
     {
-      test: [/\.js$/,/\.es6$/],
+      test: [/\.jsx?$/,/\.es6$/],
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
@@ -25,7 +25,7 @@ module.exports = {
   },
   devtool: 'eval',
   resolve: {
-    extensions: ['', '.js', '.es6']
+    extensions: ['', '.js', '.es6', 'jsx']
   },
   plugins: [
     function() {
