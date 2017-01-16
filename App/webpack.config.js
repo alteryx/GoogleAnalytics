@@ -23,7 +23,7 @@ module.exports = {
     }
   ]
   },
-  devtool: 'eval',
+  devtool: '#source-map',
   resolve: {
     extensions: ['', '.js', '.es6', 'jsx']
   },

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { setFreshAccessToken, login, displayFieldset } from './utils/utils'
+import { setFreshAccessToken, login, displayFieldset, setPage } from './utils/utils'
 import AyxStore from './stores/AyxStore'
 import * as accounts from './utils/accountUtils'
 import * as metadataRequest from './utils/metadataRequest'
@@ -13,12 +13,9 @@ import moment from 'moment'
 import * as picker from './utils/datePickers'
 import SegmentMessage from './components/segmentMessage.jsx'
 import DateMessage from './components/dateMessage.jsx'
+import conditionallyEnable from './utils/interfaceStateControl'
 
 Alteryx.Gui.AfterLoad = (manager) => {
-  // Adds metrics.metricsSelectionCheck to UserDataChanged of metricsList
-  // bind functions no longer necessary due to metricMessage.js and dimensionMessage.js
-  // metrics.bindMetricCheck()
-  // dimensions.bindDimensionCheck()
 
   const collection = [
     {key: 'client_id', type: 'value'},
@@ -37,7 +34,8 @@ Alteryx.Gui.AfterLoad = (manager) => {
     {key: 'preDefDropDown', type: 'value'},
     {key: 'segmentsList', type: 'listBox'},
     {key: 'advOptions', type: 'value'},
-    {key: 'maxResults', type: 'value'}
+    {key: 'maxResults', type: 'value'},
+    {key: 'page', type: 'value'}
   ]
 
   // Instantiate the mobx store which will sync all dataItems
@@ -51,26 +49,26 @@ Alteryx.Gui.AfterLoad = (manager) => {
 
   extendObservable(store, {
     // Compute total selections for metrics and metric goals for use in react messaging
-    totalMetricsAndGoals: () => {
+    get totalMetricsAndGoals () {
       let total = store.metricsList.selection.length + store.metricsGoalsList.selection.length
       return total
     },
     // Compute total selections for dimensions and dimension goals for use in react messaging
-    totalDimensionsAndGoals: () => {
+    get totalDimensionsAndGoals () {
       let total = store.dimensionsList.selection.length + store.dimensionsGoalsList.selection.length
       return total
     },
     // Compute total number of selected segments, for use in react messaging
-    totalSegments: () => {
+    get totalSegments () {
       let total = store.segmentsList.selection.length
       return total
     },
     // Compute if startDatePicker value is greater than endDatePicker value
-    startIsAfterEnd: () => {
+    get startIsAfterEnd () {
       return store.startDatePicker > store.endDatePicker
     },
     // Compute start date for currently selected preDefDropDown value
-    preDefStart: () => {
+    get preDefStart () {
       if (store.preDefDropDown === 'custom') {
         return store.startDatePicker
       } else {
@@ -78,7 +76,7 @@ Alteryx.Gui.AfterLoad = (manager) => {
       }
     },
     // Compute end date for currently selected preDefDropDown value
-    preDefEnd: () => {
+    get preDefEnd () {
       if (store.preDefDropDown === 'custom') {
         return store.endDatePicker
       } else {
@@ -86,10 +84,14 @@ Alteryx.Gui.AfterLoad = (manager) => {
       }
     },
     // Compute if preDefined date values match currently set picker values
-    isCustomDate: () => {
+    get isCustomDate () {
       return store.startDatePicker !== store.preDefStart ||
              store.endDatePicker !== store.preDefEnd
     }
+  })
+
+  autorun(() => {
+    store.page === '' ? displayFieldset('#accessMethod') : displayFieldset(store.page)
   })
 
   // Update preDefined selector to 'custom' when a custom date is selected/entered
@@ -145,6 +147,41 @@ Alteryx.Gui.AfterLoad = (manager) => {
     }
   })
 
+  // Disable Next Buttons until all page requirements are met
+  autorun(() => {
+    const profileConditions = [
+      store.accountsList.selection,
+      store.webPropertiesList.selection,
+      store.profilesList.selection
+    ]
+
+    conditionallyEnable('profileSelectorsNextBtn', profileConditions)
+  })
+
+  autorun(() => {
+    const target = document.getElementById('metricsNextBtn')
+    const total = store.totalMetricsAndGoals
+
+    if (total < 1) {
+      target.setAttribute('disabled', 'true')
+    } else if (total > 10) {
+      target.setAttribute('disabled', 'true')
+    } else {
+      target.removeAttribute('disabled')
+    }
+  })
+
+  autorun(() => {
+    const target = document.getElementById('datePickersNextBtn')
+    const invalidDateRange = store.startIsAfterEnd
+
+    if (invalidDateRange) {
+      target.setAttribute('disabled', 'true')
+    } else {
+      target.removeAttribute('disabled')
+    }
+  })
+
   // Render react component which handles Metric selection messaging
   ReactDOM.render(<MetricMessage store={store} />, document.querySelector('#selectedMetrics'))
 
@@ -161,18 +198,8 @@ Alteryx.Gui.AfterLoad = (manager) => {
   let optionList = [{uiobject: 'test1', dataname: 'test1 value'},
                     {uiobject: 'test2', dataname: 'test2 value'}]
 
-  store.client_id = '934931015435-4ugtr9vvg2jiefrn9r8t1d8ato000bdq.apps.googleusercontent.com'
-  store.client_secret = '2qXTVfi_lkB5ZvutdZlWm9Dr'
-  store.refresh_token = '1/-hh4BUqg51tYT4w-YevMPzJ6LuGmx4vzWbCgvUzCrz8'
-
-  accounts.populateAccountsList(store)
-  // accounts.populateWebPropertiesList(store)
-  // accounts.populateProfilesMenu(store)
-  // metadataRequest.pushCombinedMetadata(store)
-  // goals.populateMetricsGoalsList(store)
-  // goals.populateDimensionsGoalsList(store)
-  // segments.populateSegmentsList(store)
-
+  // All window declarations, below, are simply to expose functionality to the console, and
+  // should probably be removed or commented out before shipping the connector.
   window.optionList = optionList
 
   window.store = store
@@ -182,6 +209,8 @@ Alteryx.Gui.AfterLoad = (manager) => {
   window.login = login
 
   window.displayFieldset = displayFieldset
+
+  window.setPage = setPage
 
   window.populateAccountsList = accounts.populateAccountsList
 

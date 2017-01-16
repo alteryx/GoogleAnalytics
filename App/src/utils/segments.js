@@ -1,10 +1,9 @@
-import AyxStore from '../stores/AyxStore'
-
-// hard-coded IDs may be temp (discuss further)
-const metadataRequestUri = 'https://www.googleapis.com/analytics/v3/management/segments'
+import _ from 'lodash'
 
 // get metadata for standard metrics
-const getSegmentsMetadata = (accessToken) => {
+const getSegmentsMetadata = (store) => {
+  const metadataRequestUri = 'https://www.googleapis.com/analytics/v3/management/segments'
+
   const settings = {
     'async': true,
     'crossDomain': true,
@@ -12,7 +11,7 @@ const getSegmentsMetadata = (accessToken) => {
     'method': 'GET',
     'dataType': 'json',
     'headers': {
-      'Authorization': 'Bearer ' + accessToken,
+      'Authorization': 'Bearer ' + store.accessToken,
       'cache-control': 'private, max-age=0, must-revalidate, no-transform',
       'content-type': 'application/json; charset=UTF-8'
     }
@@ -33,19 +32,25 @@ const parseSegments = (results) => {
   })
   return segmentsList
 }
+// sort segmentsList using lodash
+const sortSegmentsList = (segmentsList) => {
+  return _.orderBy(segmentsList, [a => a.uiobject.toLowerCase()], ['asc'])
+}
 
 const segmentsStorePush = (result) => {
+  store.segmentsList.stringList = []
+
   result.map((d) => {
-   store.segmentsList.stringList.push({uiobject: d.uiobject, dataname: d.dataname})
+    store.segmentsList.stringList.push({uiobject: d.uiobject, dataname: d.definition})
   })
 }
 
 const populateSegmentsList = (store) => {
-  const fetchSegments = getSegmentsMetadata(store.accessToken)
+  const fetchSegments = getSegmentsMetadata(store)
 
   fetchSegments
-
     .then(parseSegments)
+    .then(sortSegmentsList)
     .done(segmentsStorePush)
 }
 

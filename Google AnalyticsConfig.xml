@@ -9,7 +9,8 @@
       <!--Connection Name="Input" AllowMultiple="False" Optional="True" Type="Connection" Label=""/-->
     </InputConnections>
     <OutputConnections>
-      <Connection Name="Output" AllowMultiple="False" Optional="False" Type="Connection" Label=""/>
+      <Connection Name="Data" AllowMultiple="False" Optional="False" Type="Connection" Label="D"/>
+      <Connection Name="Summary" AllowMultiple="False" Optional="False" Type="Connection" Label="S"/>
     </OutputConnections>
   </GuiSettings>
   <Properties>

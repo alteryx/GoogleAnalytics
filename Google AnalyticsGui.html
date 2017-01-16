@@ -122,6 +122,12 @@ Google Analytics Input GUI
             float: left;
         }
 
+        input:disabled {
+            opacity: .5;
+            background: #DDDDDD;
+            pointer-events: none;
+        }
+
         /*@media (max-width:407px) {
             .alignment_container {
                 padding-left:5%;
@@ -138,7 +144,7 @@ Google Analytics Input GUI
 
 <body>
 <!-- 1st view - Online or Offline Mode -->
-    <fieldset id="accessMethod" style="display:block">
+    <fieldset id="accessMethod" style="display:none">
         <legend>Sign in to Google Analytics</legend>
         <table>
             <tr>
@@ -150,7 +156,7 @@ Google Analytics Input GUI
             <tr><td height="3"></td></tr>
             <tr>
                 <td>
-                <button style="width:116px;" type="submit" id="offlineMode" onclick="displayFieldset(['#offlineCreds']);">Offline</button><br/><br/>
+                <button style="width:116px;" type="submit" id="offlineMode" onclick="setPage('#offlineCreds');">Offline</button><br/><br/>
                 Sign in using API credentials. This option requires obtaining a Client ID, Secret, and Token and does not require re-entering credentials to run a workflow.
                 </td>
             </tr>
@@ -162,7 +168,7 @@ Google Analytics Input GUI
         <br/>
         <br/>
         <br/>
-        <a href="javascript:void(0)" onclick="displayFieldset(['#accessMethod']); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
+        <a href="javascript:void(0)" onclick="setPage('#accessMethod'); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
     </fieldset>
 
 <!-- 1b view - Offline credentials -->
@@ -178,16 +184,16 @@ Google Analytics Input GUI
         <alteryx-pluginwidget type="TextBox" password="true" id="dataItemRefreshToken" dataName="refresh_token"></alteryx-pluginwidget>
         <label></label>
         <div>
-            <button type="submit" style="float: right" id="connect_button" onclick="setFreshAccessToken();">Connect</button>
+            <button type="submit" style="float: right" id="connect_button" onclick="setFreshAccessToken(); setPage('#profileSelectors');">Connect</button>
         </div>
         <br/>
         <br/>
         <br/>
-        <a href="javascript:void(0)" onclick="displayFieldset(['#accessMethod']); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
+        <a href="javascript:void(0)" onclick="setPage('#accessMethod'); myIFrame.location='https://www.google.com/accounts/Logout';">Change Login Credentials</a>
     </fieldset>
 
 <!-- Account/WebProperties/Profiles Selectors fieldset -->
-    <fieldset id="profileSelectors" style="display:block;">
+    <fieldset id="profileSelectors" style="display:none;">
         <legend>Select an Account, WebProperty, and Profile</legend>
         <label>Available Accounts</label>
         <alteryx-pluginwidget type="DropDown"  id="accountsList" dataName="accountsList"></alteryx-pluginwidget>
@@ -200,13 +206,60 @@ Google Analytics Input GUI
         <p style="margin: 5px;"></p>
         <div>
             <!-- Add id name and onclick function during process story -->
-            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
-            <button class="prevBtn" id="" onclick="">Previous</button>
+            <button type="submit" class="nextBtn" id="profileSelectorsNextBtn" onclick="setPage('#datePickers');">Next</button>
+            <button class="prevBtn" id="profileSelectorsPrevBtn" onclick="setPage('#accessMethod');">Previous</button>
         </div>
     </fieldset>
 
+    <!-- Date Pickers fieldset -->
+        <fieldset id="datePickers" style="display:none;"><!--Add a display:none during process story-->
+            <legend>Select Dates to Include</legend>
+            <div id="preDefDateRange">
+                <label for="preDefDropDown">Preset Date Range</label>
+                <alteryx-pluginwidget type="DropDown" id="preDefDropDown" dataName="preDefDropDown">
+                    <alteryx-option uiobject="Custom">custom</alteryx-option>
+                    <alteryx-option uiobject="Today">today</alteryx-option>
+                    <alteryx-option uiobject="Yesterday">yesterday</alteryx-option>
+                    <alteryx-option uiobject="Last 7 Days">last7Days</alteryx-option>
+                    <alteryx-option uiobject="Last Week">lastWeek</alteryx-option>
+                    <alteryx-option uiobject="Last 30 Days">last30Days</alteryx-option>
+                    <alteryx-option uiobject="Last Month">lastMonth</alteryx-option>
+                    <alteryx-option uiobject="Month to Date">monthToDate</alteryx-option>
+                    <alteryx-option uiobject="Year to Date">yearToDate</alteryx-option>
+                    <alteryx-option uiobject="Last Year">lastYear</alteryx-option>
+                </alteryx-pluginwidget>
+            </div>
+            <br>
+            <div id="startDate" class="datePicker">
+                <label for="startDatePicker" class="datePickerLabel">Start</label>
+                <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="startDatePicker" dataType="SimpleDate" dataName="startDatePicker">
+                </alteryx-pluginwidget>
+            </div>
+            <div id="endDate" class="datePicker">
+                <label for="endDatePicker" class="datePickerLabel">End</label>
+                <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="endDatePicker" dataType="SimpleDate" dataName="endDatePicker"></alteryx-pluginwidget>
+            </div>
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <br><br />
+            <div>
+                <div id="dateWarning"></div>
+              <div style="float: right">
+              <!-- Add id name and onclick function during process story -->
+                <button type="submit" class="nextBtn" id="datePickersNextBtn" onclick="setPage('#metrics')">Next</button>
+                <button class="prevBtn" id="datePickersPrevBtn" onclick="setPage('#profileSelectors')">Previous</button>
+              </div>
+            </div>
+        </fieldset>
+
 <!-- Metrics fieldset -->
-    <fieldset id="metrics" style="display:block;"><!--Add a display:none during process story-->
+    <fieldset id="metrics" style="display:none;"><!--Add a display:none during process story-->
         <legend>Select Metrics to Include</legend>
         <hr>
         <p class="selectionLegend">Select up to ten metrics and goals...</p>
@@ -215,11 +268,16 @@ Google Analytics Input GUI
         <alteryx-pluginwidget type="ListBox" datatype="MultiStringSelector"
           ismultiselect="true" issearchable="true" id="metricsGoalsList" dataName="metricsGoalsList" showsearchrow="true"></alteryx-pluginwidget>
         <div id="selectedMetrics"></div>
-        
+        <div>
+            <!-- Add id name and onclick function during process story -->
+            <button type="submit" class="nextBtn" id="metricsNextBtn" onclick="setPage('#dimensions')">Next</button>
+            <button class="prevBtn" id="metricsPrevBtn" onclick="setPage('#datePickers')">Previous</button>
+        </div>
+
     </fieldset>
 
 <!-- Dimensions fieldset -->
-    <fieldset id="dimensions" style="display:block;"><!--Add a display:none during process story-->
+    <fieldset id="dimensions" style="display:none;"><!--Add a display:none during process story-->
         <legend>Select Dimensions to Include (Optional)</legend>
         <hr>
         <p class="selectionLegend">Select up to seven dimensions and goals...</p>
@@ -230,13 +288,13 @@ Google Analytics Input GUI
         <div id="selectedDimensions"></div>
         <div>
             <!-- Add id name and onclick function during process story -->
-            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
-            <button class="prevBtn" id="" onclick="">Previous</button>
+            <button type="submit" class="nextBtn" id="dimensionsNextBtn" onclick="setPage('#segments')">Next</button>
+            <button class="prevBtn" id="dimensionsPrevBtn" onclick="setPage('#metrics')">Previous</button>
         </div>
     </fieldset>
 
 <!-- Segments fieldset -->
-    <fieldset id="segments" style="display:block;"><!--Add a display:none during process story-->
+    <fieldset id="segments" style="display:none;"><!--Add a display:none during process story-->
         <legend>Select Segments to Include (Optional)</legend>
         <hr>
         <p class="selectionLegend">Select up to four segments...</p>
@@ -252,56 +310,15 @@ Google Analytics Input GUI
         </div>
         <div>
             <!-- Add id name and onclick function during process story -->
-            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
-            <button class="prevBtn" id="" onclick="">Previous</button>
+            <button type="submit" class="nextBtn" id="segmentsNextBtn" onclick="">Next</button>
+            <button class="prevBtn" id="segmentsPrevBtn" onclick="setPage('#dimensions')">Previous</button>
         </div>
     </fieldset>
-
-<!-- Date Pickers fieldset -->
-    <fieldset id="datePickers" style="display:block;"><!--Add a display:none during process story-->
-        <legend>Select Dates to Include</legend>
-        <div id="preDefDateRange">
-            <label for="preDefDropDown">Preset Date Range</label>
-            <alteryx-pluginwidget type="DropDown" id="preDefDropDown" dataName="preDefDropDown">
-                <alteryx-option uiobject="Custom">custom</alteryx-option>
-                <alteryx-option uiobject="Today">today</alteryx-option>
-                <alteryx-option uiobject="Yesterday">yesterday</alteryx-option>
-                <alteryx-option uiobject="Last 7 Days">last7Days</alteryx-option>
-                <alteryx-option uiobject="Last Week">lastWeek</alteryx-option>
-                <alteryx-option uiobject="Last 30 Days">last30Days</alteryx-option>
-                <alteryx-option uiobject="Last Month">lastMonth</alteryx-option>
-                <alteryx-option uiobject="Month to Date">monthToDate</alteryx-option>
-                <alteryx-option uiobject="Year to Date">yearToDate</alteryx-option>
-                <alteryx-option uiobject="Last Year">lastYear</alteryx-option>
-            </alteryx-pluginwidget>
-        </div>
-        <br>
-        <div id="startDate" class="datePicker">
-            <label for="startDatePicker" class="datePickerLabel">Start</label>
-            <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="startDatePicker" dataType="SimpleDate" dataName="startDatePicker">
-            </alteryx-pluginwidget>
-        </div>
-        <div id="endDate" class="datePicker">
-            <label for="endDatePicker" class="datePickerLabel">End</label>
-            <alteryx-pluginwidget type="DateTimeField" dateFormat="YYYY-MM-DD" id="endDatePicker" dataType="SimpleDate" dataName="endDatePicker"></alteryx-pluginwidget>
-        </div>
-        <div>
-            <div id="dateWarning"></div>
-          <div style="float: right">
-          <!-- Add id name and onclick function during process story -->
-            <button type="submit" class="nextBtn" id="" onclick="">Next</button>
-            <button class="prevBtn" id="" onclick="">Previous</button>
-          </div>
-        </div>
-    </fieldset>
-
-
-
 
 <!-- fieldset for the non-captured fields -->
     <fieldset id="token" style="display:none">
         <alteryx-pluginwidget type="TextBox" id="dataItemAccessToken" dataName="accessToken"></alteryx-pluginwidget>
-        <alteryx-pluginwidget type="TextBox" id="dataItemView" dataName="view"></alteryx-pluginwidget>
+        <alteryx-pluginwidget type="TextBox" id="page" dataName="page"></alteryx-pluginwidget>
 
         <a href="#" style="display:none" id="logoutText" target='myIFrame' onclick="myIFrame.location='https://www.google.com/accounts/Logout';"></a>
         <iframe name='myIFrame' id="myIFrame" style='display:none'></iframe>

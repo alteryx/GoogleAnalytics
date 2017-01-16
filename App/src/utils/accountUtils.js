@@ -16,7 +16,7 @@ const populateAccountsList = (store) => {
   const setAccountsDropdownMenu = (accountsList) => {
     //Alteryx.Gui.manager.GetDataItem('accountsDropDown').setStringList(accountsList);
     store.accountsList.stringList = accountsList;
-    console.log(accountsList);
+    // console.log(accountsList);
   }
 
   fetchAccounts
@@ -112,7 +112,7 @@ const populateWebPropertiesList = (store) => {
     .then(filterProfiles)
     .then(createProfilesList)
     .then(populateWebPropertiesMenuObjects)
-    .done((results) => {console.log(results)});
+    // .done((results) => {console.log(results)});
 }
 
 const populateProfilesMenu = (store) => {

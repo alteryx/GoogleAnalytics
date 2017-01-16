@@ -16,7 +16,7 @@
     </Node>
     <Node ToolID="124">
       <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-        <Position x="54.25132" y="54" width="616" height="80" />
+        <Position x="54.2513" y="54" width="616" height="80" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -37,7 +37,7 @@ Google Analytics Input</Text>
     </Node>
     <Node ToolID="123">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="54" y="373.9703" width="1734" height="462" />
+        <Position x="54" y="373.9703" width="2550" height="462" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -55,7 +55,7 @@ Google Analytics Input</Text>
       <ChildNodes>
         <Node ToolID="3">
           <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
-            <Position x="79.00018" y="613.9705" />
+            <Position x="79.0002" y="613.9705" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -130,39 +130,20 @@ Google Analytics Input</Text>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
         </Node>
-        <Node ToolID="20">
-          <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
-            <Position x="1704" y="613.9694" />
-          </GuiSettings>
-          <Properties>
-            <Configuration>
-              <Name>Output</Name>
-              <Abbrev />
-            </Configuration>
-            <Annotation DisplayMode="0">
-              <Name>Output</Name>
-              <DefaultAnnotationText />
-              <Left value="False" />
-            </Annotation>
-          </Properties>
-          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
-        </Node>
         <Node ToolID="95">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="246.9995" y="613.9703" />
+            <Position x="246.9995" y="613.9705" />
           </GuiSettings>
           <Properties>
             <Configuration>
               <FormulaFields>
-                <FormulaField field="Authorization" type="V_WString" size="1500" expression="'Bearer ' + [accessToken]" />
                 <FormulaField field="startDatePicker" type="Date" size="10" expression="// startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA;	-(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA;	,'Sun',1&#xA;	,'Mon',2&#xA;	,'Tue',3&#xA;	,'Wed',4&#xA;	,'Thu',5&#xA;	,'Fri',6&#xA;	,'Sat',7))&#xA;	,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" />
                 <FormulaField field="endDatePicker" type="Date" size="10" expression="// endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" />
               </FormulaFields>
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <DefaultAnnotationText>Authorization='Bearer ' + [accessToken]
-startDatePicker=// startDatePicker logic based on predefined ...
+              <DefaultAnnotationText>startDatePicker=// startDatePicker logic based on predefined ...
 endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
@@ -185,7 +166,6 @@ endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotat
                 <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
                 <Field name="advOptions" source="TextInput:" type="Bool" />
                 <Field name="maxResults" source="TextInput:" type="Int64" />
-                <Field name="Authorization" size="1500" source="Formula: 'Bearer ' + [accessToken]" type="V_WString" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -193,7 +173,7 @@ endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotat
         </Node>
         <Node ToolID="99">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="163.0001" y="613.9692" />
+            <Position x="163.0001" y="613.9705" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -270,7 +250,7 @@ endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotat
         </Node>
         <Node ToolID="115">
           <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-            <Position x="318.0001" y="417.9703" width="444" height="393" />
+            <Position x="318.0001" y="417.9703" width="443.9999" height="393" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -286,114 +266,12 @@ endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotat
             </Annotation>
           </Properties>
           <ChildNodes>
-            <Node ToolID="89">
-              <GuiSettings Plugin="AlteryxGuiToolkit.Condition.Condition">
-                <Position x="368.0002" y="461.9703" width="59" height="59" />
+            <Node ToolID="93">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DetourEnd.DetourEnd">
+                <Position x="678" y="613.9705" />
               </GuiSettings>
               <Properties>
                 <Configuration />
-                <Annotation DisplayMode="0">
-                  <Name />
-                  <DefaultAnnotationText />
-                  <Left value="False" />
-                </Annotation>
-              </Properties>
-            </Node>
-            <Node ToolID="92">
-              <GuiSettings Plugin="AlteryxBasePluginsGui.Detour.Detour">
-                <Position x="367.0001" y="613.9705" />
-              </GuiSettings>
-              <Properties>
-                <Configuration>
-                  <DetourRight value="" />
-                </Configuration>
-                <Annotation DisplayMode="0">
-                  <Name />
-                  <DefaultAnnotationText />
-                  <Left value="False" />
-                </Annotation>
-                <MetaInfo connection="Left">
-                  <RecordInfo>
-                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
-                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
-                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="advOptions" source="TextInput:" type="Bool" />
-                    <Field name="maxResults" source="TextInput:" type="Int64" />
-                    <Field name="Authorization" size="1500" source="Formula: 'Bearer ' + [accessToken]" type="V_WString" />
-                  </RecordInfo>
-                </MetaInfo>
-                <MetaInfo connection="Right">
-                  <RecordInfo>
-                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
-                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
-                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="advOptions" source="TextInput:" type="Bool" />
-                    <Field name="maxResults" source="TextInput:" type="Int64" />
-                    <Field name="Authorization" size="1500" source="Formula: 'Bearer ' + [accessToken]" type="V_WString" />
-                  </RecordInfo>
-                </MetaInfo>
-              </Properties>
-              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetour" />
-            </Node>
-            <Node ToolID="94">
-              <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-                <Position x="368.0001" y="537.9703" width="59" height="59" />
-              </GuiSettings>
-              <Properties>
-                <Configuration />
-                <Annotation DisplayMode="0">
-                  <Name />
-                  <DefaultAnnotationText />
-                  <Left value="False" />
-                </Annotation>
-              </Properties>
-            </Node>
-            <Node ToolID="98">
-              <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
-                <Position x="572.0001" y="653.9703" />
-              </GuiSettings>
-              <Properties>
-                <Configuration>
-                  <CartesianMode>Error</CartesianMode>
-                  <SelectConfiguration>
-                    <Configuration outputConnection="Output">
-                      <OrderChanged value="False" />
-                      <SelectFields>
-                        <SelectField field="Target_accessToken" selected="False" />
-                        <SelectField field="Target_client_secret" selected="False" />
-                        <SelectField field="Target_client_id" selected="False" />
-                        <SelectField field="Target_refresh_token" selected="False" />
-                        <SelectField field="Target_Authorization" selected="False" />
-                        <SelectField field="Source_Authorization" selected="True" size="25000" />
-                        <SelectField field="*Unknown" selected="True" />
-                      </SelectFields>
-                    </Configuration>
-                  </SelectConfiguration>
-                </Configuration>
                 <Annotation DisplayMode="0">
                   <Name />
                   <DefaultAnnotationText />
@@ -401,56 +279,27 @@ endDatePicker=// endDatePicker logic based on predefined date...</DefaultAnnotat
                 </Annotation>
                 <MetaInfo connection="Output">
                   <RecordInfo>
-                    <Field name="workbookID" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="worksheetID" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="workbookName" size="25000" source="TextInput:" type="V_WString" />
-                    <Field name="worksheetName" size="25000" source="TextInput:" type="V_WString" />
-                    <Field name="Authorization" size="25000" source="Formula: [token_type] + ' ' + [access_token]" type="V_WString" />
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
                   </RecordInfo>
                 </MetaInfo>
               </Properties>
-              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
-            </Node>
-            <Node ToolID="114">
-              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-                <Position x="464.0001" y="729.9703" width="192" height="56.00006" />
-              </GuiSettings>
-              <Properties>
-                <Configuration>
-                  <Text>GoogleAPI.Retrieve_Access_Token uses Client ID, Client Secret, Refresh Token to obtain new Access Token</Text>
-                  <Font name="Segoe UI" size="8.25" style="0" />
-                  <TextColor name="Black" />
-                  <FillColor name="White" />
-                  <Shape shape="0" />
-                  <Justification Justification="4" />
-                </Configuration>
-                <Annotation DisplayMode="0">
-                  <Name />
-                  <DefaultAnnotationText />
-                  <Left value="False" />
-                </Annotation>
-              </Properties>
-            </Node>
-            <Node ToolID="129">
-              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-                <Position x="343.0001" y="677.9706" width="108" height="36" />
-              </GuiSettings>
-              <Properties>
-                <Configuration>
-                  <Text>L:  Online method
-R:  Offline method</Text>
-                  <Font name="Segoe UI" size="8.25" style="0" />
-                  <TextColor name="Black" />
-                  <FillColor name="White" />
-                  <Shape shape="0" />
-                  <Justification Justification="4" />
-                </Configuration>
-                <Annotation DisplayMode="0">
-                  <Name />
-                  <DefaultAnnotationText />
-                  <Left value="False" />
-                </Annotation>
-              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetourEnd" />
             </Node>
             <Node ToolID="138">
               <GuiSettings>
@@ -476,12 +325,290 @@ refresh_token=refresh_token
               </Properties>
               <EngineSettings Macro=".\GoogleAPI.Retrieve_Access_Token.yxmc" />
             </Node>
-            <Node ToolID="93">
-              <GuiSettings Plugin="AlteryxBasePluginsGui.DetourEnd.DetourEnd">
-                <Position x="678.0001" y="606.0006" />
+            <Node ToolID="129">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="343.0001" y="677.9706" width="108" height="36" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>L:  Online method
+R:  Offline method</Text>
+                  <Font name="Segoe UI" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+            <Node ToolID="114">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="464.0001" y="729.9703" width="192" height="56.00006" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>GoogleAPI.Retrieve_Access_Token uses Client ID, Client Secret, Refresh Token to obtain new Access Token</Text>
+                  <Font name="Segoe UI" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+            <Node ToolID="98">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.AppendFields.AppendFields">
+                <Position x="572.0001" y="653.9703" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <CartesianMode>Error</CartesianMode>
+                  <SelectConfiguration>
+                    <Configuration outputConnection="Output">
+                      <OrderChanged value="False" />
+                      <SelectFields>
+                        <SelectField field="Target_accessToken" selected="False" />
+                        <SelectField field="Target_client_secret" selected="False" />
+                        <SelectField field="Target_client_id" selected="False" />
+                        <SelectField field="Target_refresh_token" selected="False" />
+                        <SelectField field="Source_Authorization" selected="True" size="25000" />
+                        <SelectField field="*Unknown" selected="True" />
+                      </SelectFields>
+                    </Configuration>
+                  </SelectConfiguration>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="Authorization" size="25000" source="Formula: [token_type] + ' ' + [access_token]" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAppendFields" />
+            </Node>
+            <Node ToolID="94">
+              <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
+                <Position x="368.0001" y="537.9703" width="59" height="59" />
               </GuiSettings>
               <Properties>
                 <Configuration />
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+            <Node ToolID="92">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Detour.Detour">
+                <Position x="367.0001" y="613.9705" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <DetourRight value="False" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Left">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="Right">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetour" />
+            </Node>
+            <Node ToolID="89">
+              <GuiSettings Plugin="AlteryxGuiToolkit.Condition.Condition">
+                <Position x="368.0002" y="461.9703" width="59" height="59" />
+              </GuiSettings>
+              <Properties>
+                <Configuration />
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="261">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="776" y="440" width="973" height="312" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>Request Data from Google Analytics API</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="254">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+                <Position x="882" y="613.9705" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <FormulaFields>
+                    <FormulaField field="baseURL" type="V_WString" size="1500" expression="&quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" />
+                    <FormulaField field="idsURL" type="V_WString" size="1500" expression="&quot;?ids=ga:&quot;+[profilesList]" />
+                    <FormulaField field="startDateURL" type="V_WString" size="1500" expression="&quot;&amp;start-date=&quot;+[startDatePicker]" />
+                    <FormulaField field="endDateURL" type="V_WString" size="1500" expression="&quot;&amp;end-date=&quot;+[endDatePicker]" />
+                    <FormulaField field="metricsURL" type="V_WString" size="1500" expression="IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" />
+                    <FormulaField field="dimensionsURL" type="V_WString" size="1500" expression="IF IsEmpty([dimensionsList])&#xA;	THEN IF IsEmpty([dimensionsGoalsList])&#xA;		THEN ''&#xA;		ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;		ENDIF&#xA;	ELSE IF IsNull([dimensionsGoalsList])&#xA;		THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;		ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;		ENDIF &#xA;	ENDIF" />
+                    <FormulaField field="segmentURL" type="V_WString" size="1500" expression="IF IsEmpty([segmentsList])&#xA;	THEN ''&#xA;	ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" />
+                    <FormulaField field="max-resultsURL" type="V_WString" size="1500" expression="IF [advOptions]&#xA;	THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA;	ELSE '&amp;max-results=10000'&#xA;ENDIF" />
+                    <FormulaField field="fullQueryURL" type="V_WString" size="2500" expression="[baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" />
+                  </FormulaFields>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>baseURL="https://www.googleapis.com/analytics/v3/data/ga"
+idsURL="?ids=ga:"+[profilesList]
+startDateURL="&amp;start-date="+[startDatePicker]
+...</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+            </Node>
+            <Node ToolID="255">
+              <GuiSettings Plugin="AlteryxConnectorGui.Download.Download">
+                <Position x="1036" y="613.9705" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <URLField>fullQueryURL</URLField>
+                  <OutputMode>String</OutputMode>
+                  <CodePage>65001</CodePage>
+                  <EncodeURLs value="True" />
+                  <Headers>
+                    <NameValues />
+                    <Fields orderChanged="False">
+                      <Field name="Authorization" />
+                      <Field name="fullQueryURL" selected="False" />
+                      <Field name="*Unknown" selected="False" />
+                    </Fields>
+                  </Headers>
+                  <Payload>
+                    <HTTPAction>GET</HTTPAction>
+                    <QueryStringBodyMode>Compose</QueryStringBodyMode>
+                    <ComposeNameValues />
+                    <ComposeFields orderChanged="False">
+                      <Field name="Authorization" selected="False" />
+                      <Field name="fullQueryURL" selected="False" />
+                      <Field name="*Unknown" selected="False" />
+                    </ComposeFields>
+                  </Payload>
+                  <UserName />
+                  <Password />
+                  <numConnections>2</numConnections>
+                  <Timeout>600</Timeout>
+                </Configuration>
                 <Annotation DisplayMode="0">
                   <Name />
                   <DefaultAnnotationText />
@@ -503,14 +630,1425 @@ refresh_token=refresh_token
                     <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
                     <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
                     <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
-                    <Field name="segmentsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
                     <Field name="advOptions" source="TextInput:" type="Bool" />
                     <Field name="maxResults" source="TextInput:" type="Int64" />
-                    <Field name="Authorization" size="1500" source="Formula: 'Bearer ' + [accessToken]" type="V_WString" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                    <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+                    <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
                   </RecordInfo>
                 </MetaInfo>
               </Properties>
-              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDetourEnd" />
+              <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxDownload" />
+            </Node>
+            <Node ToolID="256">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+                <Position x="964" y="613.9705" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <ByName_ErrorMode>Warning</ByName_ErrorMode>
+                  <ByName_OutputMode>All</ByName_OutputMode>
+                  <Mode>ByName</Mode>
+                  <SetOutputOrder value="False" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+            </Node>
+            <Node ToolID="257">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+                <Position x="882" y="678.0001" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <NumRows value="0" />
+                  <Fields>
+                    <Field name="Authorization" />
+                  </Fields>
+                  <Data />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+            </Node>
+            <Node ToolID="260">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="1106" y="618" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Expression>REGEX_Match([DownloadHeaders], ".*200\sOK.*")</Expression>
+                  <Mode>Custom</Mode>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>REGEX_Match([DownloadHeaders], ".*200\sOK.*")</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                    <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+                    <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                    <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+                    <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="270">
+              <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+                <Position x="1206" y="469" width="533" height="158" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Caption>Results Sampled Messaging</Caption>
+                  <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
+                  <Disabled value="False" />
+                  <Folded value="False" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+              <ChildNodes>
+                <Node ToolID="264">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+                    <Position x="1216" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <JSON_Field>DownloadData</JSON_Field>
+                      <IncludeInOutput value="False" />
+                      <SingleField value="True" />
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                        <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                        <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                        <Field name="advOptions" source="TextInput:" type="Bool" />
+                        <Field name="maxResults" source="TextInput:" type="Int64" />
+                        <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                        <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                        <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                        <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                        <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                        <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                        <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                        <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                        <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                        <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                        <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                        <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+                </Node>
+                <Node ToolID="265">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                    <Position x="1288" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <Expression>[JSON_Name] IN ("sampleSize","sampleSpace")</Expression>
+                      <Mode>Custom</Mode>
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText>[JSON_Name] IN ("sampleSize","sampleSpace")</DefaultAnnotationText>
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="True">
+                      <RecordInfo>
+                        <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                        <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                        <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                        <Field name="advOptions" source="TextInput:" type="Bool" />
+                        <Field name="maxResults" source="TextInput:" type="Int64" />
+                        <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                        <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                        <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                        <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                        <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                        <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                        <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                        <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                        <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                        <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                        <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                        <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                    <MetaInfo connection="False">
+                      <RecordInfo>
+                        <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                        <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                        <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                        <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                        <Field name="advOptions" source="TextInput:" type="Bool" />
+                        <Field name="maxResults" source="TextInput:" type="Int64" />
+                        <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                        <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                        <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                        <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                        <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                        <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                        <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                        <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                        <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                        <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                        <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                        <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+                </Node>
+                <Node ToolID="266">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+                    <Position x="1434" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <GroupFields />
+                      <HeaderField field="JSON_Name" />
+                      <DataField field="JSON_ValueString" />
+                      <Methods>
+                        <Method method="Concat" />
+                        <Separator>,</Separator>
+                        <FieldSize value="2048" />
+                      </Methods>
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                      </RecordInfo>
+                      <SortInfo>
+                      </SortInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+                </Node>
+                <Node ToolID="267">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+                    <Position x="1360" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <OrderChanged value="False" />
+                      <SelectFields>
+                        <SelectField field="JSON_Name" selected="True" />
+                        <SelectField field="JSON_ValueString" selected="True" />
+                        <SelectField field="*Unknown" selected="False" />
+                      </SelectFields>
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                        <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+                </Node>
+                <Node ToolID="268">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
+                    <Position x="1670" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <When>Filter</When>
+                      <Filter>!IsNull([sampleSize])</Filter>
+                      <Type>Message</Type>
+                      <Priority>High</Priority>
+                      <Transient>False</Transient>
+                      <MessageExpression>"Google Analytics results have been sampled  |  This report is based on "+ToString([samplePercent])+"% of sessions"</MessageExpression>
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="sampleSize" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="sampleSpace" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="samplePercent" scale="2" size="19" source="Formula: 100*(ToNumber([sampleSize])/ToNumber([sampleSpace]))" type="FixedDecimal" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+                </Node>
+                <Node ToolID="275">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+                    <Position x="1526" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <ByName_ErrorMode>Warning</ByName_ErrorMode>
+                      <ByName_OutputMode>All</ByName_OutputMode>
+                      <Mode>ByName</Mode>
+                      <SetOutputOrder value="False" />
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="sampleSize" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="sampleSpace" size="1073741823" source="TextInput:" type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+                </Node>
+                <Node ToolID="274">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+                    <Position x="1434" y="558" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <NumRows value="0" />
+                      <Fields>
+                        <Field name="sampleSize" />
+                        <Field name="sampleSpace" />
+                      </Fields>
+                      <Data />
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText />
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="sampleSize" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="sampleSpace" size="1073741823" source="TextInput:" type="V_WString" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+                </Node>
+                <Node ToolID="277">
+                  <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+                    <Position x="1598" y="498" />
+                  </GuiSettings>
+                  <Properties>
+                    <Configuration>
+                      <FormulaFields>
+                        <FormulaField field="samplePercent" type="FixedDecimal" size="19.2" expression="100*(ToNumber([sampleSize])/ToNumber([sampleSpace]))" />
+                      </FormulaFields>
+                    </Configuration>
+                    <Annotation DisplayMode="0">
+                      <Name />
+                      <DefaultAnnotationText>samplePercent=100*(ToNumber([sampleSize])/ToNumber([sampleSpa...</DefaultAnnotationText>
+                      <Left value="False" />
+                    </Annotation>
+                    <MetaInfo connection="Output">
+                      <RecordInfo>
+                        <Field name="sampleSize" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="sampleSpace" size="1073741823" source="TextInput:" type="V_WString" />
+                        <Field name="samplePercent" scale="2" size="19" source="Formula: 100*(ToNumber([sampleSize])/ToNumber([sampleSpace]))" type="FixedDecimal" />
+                      </RecordInfo>
+                    </MetaInfo>
+                  </Properties>
+                  <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+                </Node>
+              </ChildNodes>
+            </Node>
+            <Node ToolID="262">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="1207" y="702" width="144" height="40" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>API Response
+Error Messaging</Text>
+                  <Font name="Segoe UI" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+            <Node ToolID="259">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+                <Position x="1216" y="647" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <JSON_Field>DownloadData</JSON_Field>
+                  <IncludeInOutput value="False" />
+                  <SingleField value="True" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                    <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+            </Node>
+            <Node ToolID="258">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Message.Message">
+                <Position x="1288" y="647" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <When>Filter</When>
+                  <Filter>[JSON_Name]=='error.message'</Filter>
+                  <Type>Error</Type>
+                  <Priority>High</Priority>
+                  <Transient>False</Transient>
+                  <MessageExpression>"Google Analytics API Error Message: "+[JSON_ValueString]</MessageExpression>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                    <Field name="baseURL" size="1500" source="Formula: &quot;https://www.googleapis.com/analytics/v3/data/ga&quot;" type="V_WString" />
+                    <Field name="idsURL" size="1500" source="Formula: &quot;?ids=ga:&quot;+[profilesList]" type="V_WString" />
+                    <Field name="startDateURL" size="1500" source="Formula: &quot;&amp;start-date=&quot;+[startDatePicker]" type="V_WString" />
+                    <Field name="endDateURL" size="1500" source="Formula: &quot;&amp;end-date=&quot;+[endDatePicker]" type="V_WString" />
+                    <Field name="metricsURL" size="1500" source="Formula: IF IsEmpty([metricsList])&#xA;THEN &quot;&amp;metrics=&quot;+[metricsGoalsList]&#xA;ELSE &quot;&amp;metrics=&quot;+[metricsList]+IIF(IsEmpty([metricsGoalsList]),&quot;&quot;,(&quot;,&quot;+[metricsGoalsList]))&#xA;ENDIF" type="V_WString" />
+                    <Field name="dimensionsURL" size="1500" source="Formula: IF IsEmpty([dimensionsList])&#xA; THEN IF IsEmpty([dimensionsGoalsList])&#xA;  THEN ''&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsGoalsList] &#xA;  ENDIF&#xA; ELSE IF IsNull([dimensionsGoalsList])&#xA;  THEN &quot;&amp;dimensions=&quot;+[dimensionsList]&#xA;  ELSE &quot;&amp;dimensions=&quot;+[dimensionsList]+&quot;,&quot;+[dimensionsGoalsList] &#xA;  ENDIF &#xA; ENDIF" type="V_WString" />
+                    <Field name="segmentURL" size="1500" source="Formula: IF IsEmpty([segmentsList])&#xA; THEN ''&#xA; ELSE &quot;&amp;segment=&quot;+[segmentsList]&#xA;ENDIF" type="V_WString" />
+                    <Field name="max-resultsURL" size="1500" source="Formula: IF [advOptions]&#xA; THEN &quot;&amp;max-results=&quot;+ToString([maxResults])&#xA; ELSE '&amp;max-results=10000'&#xA;ENDIF" type="V_WString" />
+                    <Field name="fullQueryURL" size="2500" source="Formula: [baseURL]&#xA;+[idsURL]&#xA;+[startDateURL]&#xA;+[endDateURL]&#xA;+[metricsURL]&#xA;+[dimensionsURL]&#xA;+[segmentURL]&#xA;+[max-resultsURL]" type="V_WString" />
+                    <Field name="Authorization" size="1073741823" source="TextInput:" type="V_WString" />
+                    <Field name="DownloadHeaders" size="2147483647" source="Download" type="V_String" />
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMessage" />
+            </Node>
+            <Node ToolID="271">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+                <Position x="798" y="613.9705" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <FormulaFields>
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// remove a comma at the beginning of a string&#xA;IF Left([segmentsList],1) = ','&#xA;THEN Right([segmentsList],(Length([segmentsList])-1))&#xA;ELSE [segmentsList]&#xA;ENDIF" />
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// remove a comma at the end of a string&#xA;IF Right([segmentsList],1) = ','&#xA;THEN Left([segmentsList],(Length([segmentsList])-1))&#xA;ELSE [segmentsList]&#xA;ENDIF" />
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// replace two commas before users with semicolon&#xA;Replace([segmentsList], &quot;,,users::&quot;, &quot;;users::&quot;)" />
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// replace a comma before users with semicolon&#xA;Replace([segmentsList], &quot;,users::&quot;, &quot;;users::&quot;)" />
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// replace two commas before sessions with semicolon&#xA;Replace([segmentsList], &quot;,,sessions::&quot;, &quot;;sessions::&quot;)" />
+                    <FormulaField field="segmentsList" type="V_WString" size="1500" expression="// replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" />
+                  </FormulaFields>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>segmentsList=// remove a comma at the beginning of a string
+I...
+segmentsList=// remove a comma at the end of a string
+IF Righ...
+segmentsList=// replace two commas before users with semicolo...
+...</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="accessToken" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_secret" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="client_id" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="refresh_token" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="startDatePicker" source="Formula: // startDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Sunday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd(DateTimeToday(),-7,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd((DateTimeAdd(DateTimeToday(),&#xA; -(Switch(DateTimeFormat(DateTimeToday(),&quot;%a&quot;),0&#xA; ,'Sun',1&#xA; ,'Mon',2&#xA; ,'Tue',3&#xA; ,'Wed',4&#xA; ,'Thu',5&#xA; ,'Fri',6&#xA; ,'Sat',7))&#xA; ,'days')),-6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd(DateTimeToday(),-30,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeFirstOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeFirstOfMonth() &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeTrim(DateTimeToday(),'year')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year') &#xA;ELSE [startDatePicker] ENDIF" type="Date" />
+                    <Field name="endDatePicker" source="Formula: // endDatePicker logic based on predefined date dropdown&#xA;// ToDate selections end on the previous day&#xA;// Monday is start of week&#xA;IF [preDefDropDown]=&quot;today&quot; THEN DateTimeToday() &#xA;ELSEIF [preDefDropDown]=&quot;yesterday&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;last7Days&quot; THEN DateTimeAdd([startDatePicker],6,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastWeek&quot; THEN DateTimeAdd([startDatePicker],6,'days')&#xA;ELSEIF [preDefDropDown]=&quot;last30Days&quot; THEN DateTimeAdd([startDatePicker],29,'days') &#xA;ELSEIF [preDefDropDown]=&quot;lastMonth&quot; THEN DateTimeAdd(DateTimeLastOfMonth(),-1,'month') &#xA;ELSEIF [preDefDropDown]=&quot;monthToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days') &#xA;ELSEIF [preDefDropDown]=&quot;yearToDate&quot; THEN DateTimeAdd(DateTimeToday(),-1,'days')&#xA;ELSEIF [preDefDropDown]=&quot;lastYear&quot; THEN DateTimeFormat(DateTimeAdd(DateTimeTrim(DateTimeToday(),'year'),-1,'year'),&quot;%Y&quot;)+&quot;-12-31&quot; &#xA;ELSE [endDatePicker] ENDIF" type="Date" />
+                    <Field name="preDefDropDown" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="webPropertiesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="accountsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="profilesList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="metricsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="dimensionsGoalsList" size="1500" source="TextInput:" type="V_WString" />
+                    <Field name="segmentsList" size="1500" source="Formula: // replace a comma before sessions with semicolon&#xA;Replace([segmentsList], &quot;,sessions::&quot;, &quot;;sessions::&quot;)" type="V_WString" />
+                    <Field name="advOptions" source="TextInput:" type="Bool" />
+                    <Field name="maxResults" source="TextInput:" type="Int64" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+            </Node>
+            <Node ToolID="272">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="786" y="522.0001" width="84" height="84" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>Prep segmentsList by replacing commas with semicolons</Text>
+                  <Font name="Segoe UI" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+            <Node ToolID="273">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="882" y="522" width="60" height="84" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>Build
+API
+URL</Text>
+                  <Font name="Segoe UI" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="303">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="1766" y="445" width="813" height="319" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>JSON Response Parsing</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="10" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="285">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+                <Position x="2028" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Field>JSON_Name</Field>
+                  <NumFields value="3" />
+                  <ErrorHandling>Last</ErrorHandling>
+                  <RootName>JSON_Name</RootName>
+                  <Delimeters value="." />
+                  <Flags value="0" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name1" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name3" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+            </Node>
+            <Node ToolID="287">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="1932" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Mode>Simple</Mode>
+                  <Simple>
+                    <Field>JSON_Name</Field>
+                    <Operator>Contains</Operator>
+                    <Operands>
+                      <Operand>columnHeaders.</Operand>
+                    </Operands>
+                  </Simple>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Contains([JSON_Name],"columnHeaders.")</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="289">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="2112" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Expression>REGEX_Match([JSON_Name], "columnHeaders.\d*.name")</Expression>
+                  <Mode>Custom</Mode>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>REGEX_Match([JSON_Name], "columnHeaders.\d*.name")</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name1" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name3" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name1" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name3" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="290">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+                <Position x="2196" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <GroupFields />
+                  <HeaderField field="JSON_Name2" />
+                  <DataField field="JSON_ValueString" />
+                  <Methods>
+                    <Method method="Concat" />
+                    <Separator>,</Separator>
+                    <FieldSize value="2048" />
+                  </Methods>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="2048" source="CrossTab:Header:JSON_Name2:0:Concat:" type="V_WString" />
+                    <Field name="1" size="2048" source="CrossTab:Header:JSON_Name2:1:Concat:" type="V_WString" />
+                    <Field name="2" size="2048" source="CrossTab:Header:JSON_Name2:2:Concat:" type="V_WString" />
+                  </RecordInfo>
+                  <SortInfo>
+                  </SortInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+            </Node>
+            <Node ToolID="283">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.JSONParse.JSONParse">
+                <Position x="1848" y="527" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <JSON_Field>DownloadData</JSON_Field>
+                  <IncludeInOutput value="False" />
+                  <SingleField value="True" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJSONParse" />
+            </Node>
+            <Node ToolID="284">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+                <Position x="1776" y="527" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <OrderChanged value="False" />
+                  <SelectFields>
+                    <SelectField field="DownloadData" selected="True" />
+                    <SelectField field="*Unknown" selected="False" />
+                  </SelectFields>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="DownloadData" size="1073741823" source="Download" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+            </Node>
+            <Node ToolID="286">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="1932" y="575" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Mode>Simple</Mode>
+                  <Simple>
+                    <Field>JSON_Name</Field>
+                    <Operator>Contains</Operator>
+                    <Operands>
+                      <Operand>rows.</Operand>
+                    </Operands>
+                  </Simple>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Contains([JSON_Name],"rows.")</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="288">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+                <Position x="2028" y="575" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Field>JSON_Name</Field>
+                  <NumFields value="3" />
+                  <ErrorHandling>Last</ErrorHandling>
+                  <RootName>JSON_Name</RootName>
+                  <Delimeters value="." />
+                  <Flags value="0" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name1" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name3" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+            </Node>
+            <Node ToolID="291">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+                <Position x="2112" y="575" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <GroupFields>
+                    <Field field="JSON_Name2" />
+                  </GroupFields>
+                  <HeaderField field="JSON_Name3" />
+                  <DataField field="JSON_ValueString" />
+                  <Methods>
+                    <Method method="Concat" />
+                    <Separator>,</Separator>
+                    <FieldSize value="2048" />
+                  </Methods>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="CrossTab:Group:Concat:" type="V_WString" />
+                    <Field name="0" size="2048" source="CrossTab:Header:JSON_Name3:0:Concat:" type="V_WString" />
+                    <Field name="1" size="2048" source="CrossTab:Header:JSON_Name3:1:Concat:" type="V_WString" />
+                    <Field name="2" size="2048" source="CrossTab:Header:JSON_Name3:2:Concat:" type="V_WString" />
+                  </RecordInfo>
+                  <SortInfo>
+                    <Field field="JSON_Name2" order="Asc" />
+                  </SortInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+            </Node>
+            <Node ToolID="292">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+                <Position x="2366" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <ByName_ErrorMode>Warning</ByName_ErrorMode>
+                  <ByName_OutputMode>All</ByName_OutputMode>
+                  <Mode>ByName</Mode>
+                  <SetOutputOrder value="True" />
+                  <OutputOrder>
+                    <Connection>#1</Connection>
+                    <Connection>#2</Connection>
+                  </OutputOrder>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                    <Field name="1" size="2048" source="(Multiple Sources)" type="V_WString" />
+                    <Field name="2" size="2048" source="(Multiple Sources)" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+            </Node>
+            <Node ToolID="293">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicRename.DynamicRename">
+                <Position x="2442" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <RenameMode>FirstRow</RenameMode>
+                  <Fields orderChanged="False">
+                    <Field name="0" />
+                    <Field name="1" />
+                    <Field name="2" />
+                    <Field name="*Unknown" />
+                  </Fields>
+                  <Expression />
+                  <FirstRow>
+                    <OnError>Warn</OnError>
+                  </FirstRow>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                    <Field name="1" size="2048" source="CrossTab: (Multiple Sources)" type="V_WString" />
+                    <Field name="2" size="2048" source="CrossTab: (Multiple Sources)" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicRename" />
+            </Node>
+            <Node ToolID="294">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+                <Position x="2282" y="575" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <OrderChanged value="False" />
+                  <SelectFields>
+                    <SelectField field="JSON_Name2" selected="False" />
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                    <Field name="1" size="2048" source="CrossTab:Header:JSON_Name3:1:Concat:" type="V_WString" />
+                    <Field name="2" size="2048" source="CrossTab:Header:JSON_Name3:2:Concat:" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+            </Node>
+            <Node ToolID="295">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="1932" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Expression>!Contains([JSON_Name],"columnHeaders.")
+AND
+!Contains([JSON_Name],"rows.")
+AND
+!([JSON_Name]="kind")
+AND
+!([JSON_Name]="id")
+AND
+!Contains([JSON_Name],"itemsPerPage")</Expression>
+                  <Mode>Custom</Mode>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>!Contains([JSON_Name],"columnHeaders.")
+AND
+!Contains([JSON_N...</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="296">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextToColumns.TextToColumns">
+                <Position x="2028" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Field>JSON_Name</Field>
+                  <NumFields value="3" />
+                  <ErrorHandling>Last</ErrorHandling>
+                  <RootName>JSON_Name</RootName>
+                  <Delimeters value="." />
+                  <Flags value="0" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="JSON_Name" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field name="JSON_ValueString" size="1073741823" source="JSONParse: " type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name1" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name3" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextToColumns" />
+            </Node>
+            <Node ToolID="297">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+                <Position x="2112" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <OrderChanged value="True" />
+                  <SelectFields>
+                    <SelectField field="JSON_Name" selected="False" />
+                    <SelectField field="JSON_Name1" selected="True" rename="Parameter" />
+                    <SelectField field="JSON_Name2" selected="True" rename="Category" />
+                    <SelectField field="JSON_ValueString" selected="True" rename="Detail" />
+                    <SelectField field="JSON_Name3" selected="False" />
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Parameter" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Category" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field name="Detail" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+            </Node>
+            <Node ToolID="298">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+                <Position x="2196" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Mode>Simple</Mode>
+                  <Simple>
+                    <Field>Category</Field>
+                    <Operator>IsNotEmpty</Operator>
+                  </Simple>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>!IsEmpty([Category])</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="True">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Parameter" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Category" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field name="Detail" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo connection="False">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Parameter" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Category" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field name="Detail" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+            </Node>
+            <Node ToolID="299">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+                <Position x="2282" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <SortInfo locale="0">
+                    <Field field="Parameter" order="Ascending" />
+                    <Field field="Category" order="Descending" />
+                  </SortInfo>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Parameter - Ascending
+Category - Descending</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Parameter" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Category" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field name="Detail" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                  <SortInfo locale="0">
+                    <Field field="Parameter" order="Ascending" />
+                    <Field field="Category" order="Descending" />
+                  </SortInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+            </Node>
+            <Node ToolID="300">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+                <Position x="2366" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <ByName_ErrorMode>Warning</ByName_ErrorMode>
+                  <ByName_OutputMode>All</ByName_OutputMode>
+                  <Mode>ByName</Mode>
+                  <SetOutputOrder value="True" />
+                  <OutputOrder>
+                    <Connection>#1</Connection>
+                    <Connection>#2</Connection>
+                  </OutputOrder>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Parameter" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="Category" size="1073741823" source="TextToColumns: Parsed from JSON_Name" type="V_WString" />
+                    <Field name="Detail" size="1073741823" source="JSONParse: " type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+            </Node>
+            <Node ToolID="301">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+                <Position x="2510" y="695" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Name>Summary</Name>
+                  <Abbrev>S</Abbrev>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+            </Node>
+            <Node ToolID="302">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+                <Position x="2510" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Name>Data</Name>
+                  <Abbrev>D</Abbrev>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+            </Node>
+            <Node ToolID="305">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+                <Position x="2112" y="630" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <NumRows value="0" />
+                  <Fields>
+                    <Field name="0" />
+                  </Fields>
+                  <Data />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="1073741823" source="TextInput:" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+            </Node>
+            <Node ToolID="306">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+                <Position x="2196" y="575" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <ByName_ErrorMode>Warning</ByName_ErrorMode>
+                  <ByName_OutputMode>All</ByName_OutputMode>
+                  <Mode>ByName</Mode>
+                  <SetOutputOrder value="False" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field description="TextToColumns: Parsed from JSON_Name" name="JSON_Name2" size="1073741823" source="CrossTab:Group:Concat:" type="V_WString" />
+                    <Field name="0" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+                    <Field name="1" size="2048" source="CrossTab:Header:JSON_Name3:1:Concat:" type="V_WString" />
+                    <Field name="2" size="2048" source="CrossTab:Header:JSON_Name3:2:Concat:" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+            </Node>
+            <Node ToolID="307">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.MultiFieldFormula.MultiFieldFormula">
+                <Position x="2282" y="474" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <FieldType>All</FieldType>
+                  <Fields orderChanged="False">
+                    <Field name="0" />
+                    <Field name="1" />
+                    <Field name="2" />
+                    <Field name="*Unknown" />
+                  </Fields>
+                  <CopyOutput value="False" />
+                  <Expression>Replace([_CurrentField_], "ga:","")</Expression>
+                  <ChangeFieldType value="False" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Replace([_CurrentField_], "ga:","")</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="0" size="2048" source="Formula: Replace([_CurrentField_], &quot;ga:&quot;,&quot;&quot;)" type="V_WString" />
+                    <Field name="1" size="2048" source="Formula: Replace([_CurrentField_], &quot;ga:&quot;,&quot;&quot;)" type="V_WString" />
+                    <Field name="2" size="2048" source="Formula: Replace([_CurrentField_], &quot;ga:&quot;,&quot;&quot;)" type="V_WString" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMultiFieldFormula" />
             </Node>
           </ChildNodes>
         </Node>
@@ -518,7 +2056,7 @@ refresh_token=refresh_token
     </Node>
     <Node ToolID="107">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="2622" y="150" width="302" height="105" />
+        <Position x="2582" y="150" width="302" height="105" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -536,7 +2074,7 @@ refresh_token=refresh_token
       <ChildNodes>
         <Node ToolID="104">
           <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-            <Position x="2647" y="194" width="252" height="36" />
+            <Position x="2607" y="194" width="252" height="36" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -558,7 +2096,7 @@ refresh_token=refresh_token
     </Node>
     <Node ToolID="113">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="55" y="153.9997" width="2411" height="212.0008" />
+        <Position x="55" y="150" width="2512" height="212.0008" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -576,7 +2114,7 @@ refresh_token=refresh_token
       <ChildNodes>
         <Node ToolID="49">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="259.2513" y="197.9997" width="59" height="59" />
+            <Position x="360.2513" y="194" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -589,7 +2127,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="50">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="259.2514" y="282.0002" width="59" height="59" />
+            <Position x="360.2514" y="278.0005" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -602,7 +2140,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="51">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="391.2514" y="198.0001" width="59" height="59" />
+            <Position x="492.2514" y="194.0006" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -615,7 +2153,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="52">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="391.2513" y="282.0005" width="59" height="59" />
+            <Position x="492.2513" y="278.0008" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -628,7 +2166,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="53">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="535.2513" y="197.9997" width="59" height="59" />
+            <Position x="636.2513" y="194" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -641,7 +2179,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="54">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="535.2513" y="282.0004" width="59" height="59" />
+            <Position x="636.2513" y="278.0007" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -654,7 +2192,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="56">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="151.2513" y="197.9997" width="59" height="59" />
+            <Position x="252.2515" y="194.0001" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -667,7 +2205,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="57">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="151.2513" y="282.0001" width="59" height="59" />
+            <Position x="252.2514" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -680,7 +2218,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="146">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="1086" y="198.0001" width="59" height="59" />
+            <Position x="1187" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -693,7 +2231,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="148">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="1398" y="198.0001" width="59" height="59" />
+            <Position x="1499" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -706,7 +2244,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="151">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Date.Date">
-            <Position x="1854" y="198.0001" width="59" height="59" />
+            <Position x="1955" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -719,7 +2257,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="152">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Date.Date">
-            <Position x="1986" y="198.0001" width="59" height="59" />
+            <Position x="2087" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -732,7 +2270,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="153">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="2142" y="198.0001" width="59" height="59" />
+            <Position x="2243" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -745,7 +2283,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="154">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1854" y="282" width="59" height="59" />
+            <Position x="1955" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -758,7 +2296,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="155">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1986" y="282" width="59" height="59" />
+            <Position x="2087" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -771,7 +2309,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="156">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="2142" y="282" width="59" height="59" />
+            <Position x="2243" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -784,7 +2322,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="158">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="822.0001" y="198" width="59" height="59" />
+            <Position x="923" y="194.0002" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -797,7 +2335,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="159">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1086" y="281.9999" width="59" height="59" />
+            <Position x="1187" y="278.0002" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -810,7 +2348,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="160">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1398" y="282" width="59" height="59" />
+            <Position x="1499" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -823,7 +2361,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="161">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="822.0001" y="282.0003" width="59" height="59" />
+            <Position x="923" y="278.0006" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -836,7 +2374,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="162">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="666.0001" y="198.0001" width="59" height="59" />
+            <Position x="767.0001" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -849,7 +2387,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="163">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="954.0001" y="198.0001" width="59" height="59" />
+            <Position x="1055" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -862,7 +2400,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="164">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="1242" y="198.0001" width="59" height="59" />
+            <Position x="1343" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -875,7 +2413,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="165">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="1566" y="198.0001" width="59" height="59" />
+            <Position x="1667" y="194.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -888,7 +2426,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="166">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="666.0002" y="282.0001" width="59" height="59" />
+            <Position x="767.0002" y="278.0004" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -901,7 +2439,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="167">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="954.0001" y="281.9998" width="59" height="59" />
+            <Position x="1055" y="278.0001" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -914,7 +2452,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="168">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1242" y="282" width="59" height="59" />
+            <Position x="1343" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -927,7 +2465,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="169">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1566" y="282" width="59" height="59" />
+            <Position x="1667" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -940,7 +2478,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="170">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="1698" y="198" width="59" height="59" />
+            <Position x="1799" y="194.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -953,7 +2491,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="171">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="1698" y="282" width="59" height="59" />
+            <Position x="1799" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -966,7 +2504,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="172">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.CheckBoxGroup.CheckBoxGroup">
-            <Position x="2262" y="198" width="59" height="59" />
+            <Position x="2363" y="194.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -979,7 +2517,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="174">
           <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
-            <Position x="2382" y="198" width="59" height="59" />
+            <Position x="2483" y="194.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -992,7 +2530,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="175">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="2262" y="282" width="59" height="59" />
+            <Position x="2363" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -1005,7 +2543,7 @@ refresh_token=refresh_token
         </Node>
         <Node ToolID="176">
           <GuiSettings Plugin="AlteryxGuiToolkit.Action.Action">
-            <Position x="2382" y="282" width="59" height="59" />
+            <Position x="2483" y="278.0003" width="59" height="59" />
           </GuiSettings>
           <Properties>
             <Configuration />
@@ -1013,6 +2551,19 @@ refresh_token=refresh_token
               <Name />
               <DefaultAnnotationText />
               <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="276">
+          <GuiSettings Plugin="AlteryxGuiToolkit.Questions.TextBox.QuestionTextBox">
+            <Position x="111.0001" y="194.0005" width="59" height="59" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="1">
+              <Name>page</Name>
+              <DefaultAnnotationText />
+              <Left value="True" />
             </Annotation>
           </Properties>
         </Node>
@@ -1151,24 +2702,184 @@ Support Macro(s)
       <Destination ToolID="95" Connection="Input" />
     </Connection>
     <Connection>
-      <Origin ToolID="89" Connection="True Condition" />
-      <Destination ToolID="94" Connection="Condition" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="92" Connection="Right" />
-      <Destination ToolID="138" Connection="Input" />
-    </Connection>
-    <Connection>
-      <Origin ToolID="92" Connection="Left" />
-      <Destination ToolID="93" Connection="Left" />
+      <Origin ToolID="93" Connection="Output" />
+      <Destination ToolID="271" Connection="Input" />
     </Connection>
     <Connection>
       <Origin ToolID="98" Connection="Output" />
       <Destination ToolID="93" Connection="Right" />
     </Connection>
     <Connection>
-      <Origin ToolID="93" Connection="Output" />
-      <Destination ToolID="20" Connection="Input" />
+      <Origin ToolID="92" Connection="Left" />
+      <Destination ToolID="93" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="92" Connection="Right" />
+      <Destination ToolID="138" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="89" Connection="True Condition" />
+      <Destination ToolID="94" Connection="Condition" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="254" Connection="Output" />
+      <Destination ToolID="256" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="257" Connection="Output" />
+      <Destination ToolID="256" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="255" Connection="Output" />
+      <Destination ToolID="260" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="256" Connection="Output" />
+      <Destination ToolID="255" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="260" Connection="False" />
+      <Destination ToolID="259" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="260" Connection="True" />
+      <Destination ToolID="264" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="260" Connection="True" />
+      <Destination ToolID="284" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="264" Connection="Output" />
+      <Destination ToolID="265" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="265" Connection="True" />
+      <Destination ToolID="267" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="266" Connection="Output" />
+      <Destination ToolID="275" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="274" Connection="Output" />
+      <Destination ToolID="275" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="267" Connection="Output" />
+      <Destination ToolID="266" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="275" Connection="Output" />
+      <Destination ToolID="277" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="277" Connection="Output" />
+      <Destination ToolID="268" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="259" Connection="Output" />
+      <Destination ToolID="258" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="271" Connection="Output" />
+      <Destination ToolID="254" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="285" Connection="Output" />
+      <Destination ToolID="289" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="287" Connection="True" />
+      <Destination ToolID="285" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="289" Connection="True" />
+      <Destination ToolID="290" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="290" Connection="Output" />
+      <Destination ToolID="307" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="283" Connection="Output" />
+      <Destination ToolID="287" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="283" Connection="Output" />
+      <Destination ToolID="295" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="283" Connection="Output" />
+      <Destination ToolID="286" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="284" Connection="Output" />
+      <Destination ToolID="283" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="286" Connection="True" />
+      <Destination ToolID="288" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="288" Connection="Output" />
+      <Destination ToolID="291" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="291" Connection="Output" />
+      <Destination ToolID="306" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="305" Connection="Output" />
+      <Destination ToolID="306" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="292" Connection="Output" />
+      <Destination ToolID="293" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="293" Connection="Output" />
+      <Destination ToolID="302" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="294" Connection="Output" />
+      <Destination ToolID="292" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="307" Connection="Output" />
+      <Destination ToolID="292" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="295" Connection="True" />
+      <Destination ToolID="296" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="296" Connection="Output" />
+      <Destination ToolID="297" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="297" Connection="Output" />
+      <Destination ToolID="298" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="298" Connection="True" />
+      <Destination ToolID="299" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="298" Connection="False" />
+      <Destination ToolID="300" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="299" Connection="Output" />
+      <Destination ToolID="300" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="300" Connection="Output" />
+      <Destination ToolID="301" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="306" Connection="Output" />
+      <Destination ToolID="294" Connection="Input" />
     </Connection>
     <Connection name="#1">
       <Origin ToolID="49" Connection="Question" />
@@ -1438,6 +3149,24 @@ Support Macro(s)
         <Value />
         <IsNumeric value="False" />
       </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>page</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Output (301)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Output (302)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
     </Constants>
     <MetaInfo>
       <NameIsFileName value="True" />
@@ -1697,12 +3426,6 @@ column	17</DynamicConfiguration>
           <ToolId value="9" />
           <Questions>
             <Question>
-              <Type>MacroOutput</Type>
-              <Description>Macro Output (46)</Description>
-              <Name>Output</Name>
-              <ToolId value="20" />
-            </Question>
-            <Question>
               <Type>TextBox</Type>
               <Description>client_id</Description>
               <Name>client_id</Name>
@@ -1728,7 +3451,7 @@ column	17</DynamicConfiguration>
               <Name>refresh_token</Name>
               <ToolId value="53" />
               <Default />
-              <Password value="False" />
+              <Password value="True" />
               <Multiline value="False" />
               <Hidden value="False" />
             </Question>
@@ -1863,6 +3586,28 @@ column	17</DynamicConfiguration>
               <Multiline value="False" />
               <Hidden value="False" />
             </Question>
+            <Question>
+              <Type>TextBox</Type>
+              <Description>page</Description>
+              <Name>page</Name>
+              <ToolId value="276" />
+              <Default />
+              <Password value="False" />
+              <Multiline value="False" />
+              <Hidden value="False" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Summary</Description>
+              <Name>Macro Output (301)</Name>
+              <ToolId value="301" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Data</Description>
+              <Name>Macro Output (302)</Name>
+              <ToolId value="302" />
+            </Question>
           </Questions>
         </Question>
       </Questions>
@@ -1876,8 +3621,9 @@ column	17</DynamicConfiguration>
       <Wiz_CustomGraphic value="False" />
       <Wiz_ShowOutput value="True" />
       <Wiz_OpenOutputTools>
-        <Tool ToolId="20" Selected="True" />
         <Tool ToolId="138" Selected="True" />
+        <Tool ToolId="301" Selected="True" />
+        <Tool ToolId="302" Selected="True" />
       </Wiz_OpenOutputTools>
       <Wiz_OutputMessage />
       <Wiz_NoOutputFilesMessage />
